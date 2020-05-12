@@ -1,0 +1,190 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "status": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "data": {
+            "type": [
+                "null",
+                "object"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "outreach": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "full_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "event": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "tags": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "linkedin": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "twitter": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "facebook": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "outreach_link": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "opened_outreach_mail": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "employee_at_company": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "industry": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "title": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "city": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "email": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "company_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "last_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "first_name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "domain": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "country": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "salesforce_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "creator_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "owner_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "bounced": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "optedout": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "sent_count": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "replied_count": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "last_sent_at": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "format": "date-time"
+        }
+    }
+}

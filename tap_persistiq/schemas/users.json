@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "email": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "activated": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "default_mailbox_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "salesforce_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}
