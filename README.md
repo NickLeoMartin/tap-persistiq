@@ -29,9 +29,8 @@ This tap:
 * Endpoint: https://api.persistiq.com/v1/leads
 * Primary key fields: id
 * Foreign key fields: none
-* Replication strategy: INCREMENTAL (query all, filter results)
-  + Bookmark: updated_after (date-time)
-* Transformations: de-nest data
+* Replication strategy: FULL_TABLE
+* Transformations: none
 
 [campaigns](http://apidocs.persistiq.com/#list-campaigns)
 
@@ -39,7 +38,7 @@ This tap:
 * Primary key fields: id
 * Foreign key fields: lead_id > id, owner_id > id
 * Replication strategy: FULL_TABLE
-* Transformations: de-nest creator, stats
+* Transformations: none
 
 ## Authentication
 

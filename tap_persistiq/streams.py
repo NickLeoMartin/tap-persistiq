@@ -11,12 +11,10 @@
 #   data_key: JSON element containing the results list for the endpoint; default = 'results'
 #   bookmark_query_field: From date-time field used for filtering the query
 #   bookmark_type: Data type for bookmark, integer or datetime
-#   batch_size: number of records requested per API call (per page); default: 60
-#   scroll_type: always, historical, or never; default never
-#   interpolate_page: True, False (to determine start page based on total pages and bookmark)
-#       default: False
 
-# Note: leads endpoint is problematic...
+# Notes:
+# - leads endpoint is problematic & using start_date in config
+#   to limit full-table replication.
 STREAMS = {
     'users': {
         'path': 'users',
@@ -28,8 +26,7 @@ STREAMS = {
         'path': 'leads',
         'data_key': 'leads',
         'key_properties': ['id'],
-        'replication_method': 'INCREMENTAL',
-        'replication_keys': ['id'],
+        'replication_method': 'FULL_TABLE',
         'bookmark_query_field': 'updated_after',
         'bookmark_type': 'datetime'
     },
