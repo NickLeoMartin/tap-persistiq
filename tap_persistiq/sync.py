@@ -78,16 +78,10 @@ def process_records(catalog, #pylint: disable=too-many-branches
             with Transformer(integer_datetime_fmt=UNIX_SECONDS_INTEGER_DATETIME_PARSING) \
                 as transformer:
 
-                LOGGER.info('record={}'.format(record))
-                LOGGER.info('schema={}'.format(schema))
-                LOGGER.info('stream_metadata={}'.format(stream_metadata))
-
                 transformed_record = transformer.transform(
                     record,
                     schema,
                     stream_metadata)
-
-                LOGGER.info('transformed_record={}'.format(transformed_record))
 
                 # Reset max_bookmark_value to new value if higher
                 if bookmark_field and (bookmark_field in transformed_record):
@@ -158,10 +152,6 @@ def sync_endpoint(client, #pylint: disable=too-many-branches
 
     next_url = '{}/{}'.format(client.base_url, path)
 
-    LOGGER.info('bookmark_query_field={}'.format(bookmark_query_field))
-    LOGGER.info('bookmark_type={}'.format(bookmark_type))
-    LOGGER.info('last_datetime={}'.format(last_datetime))
-
     i = 1
     while params['page'] is not None:
         # Need URL querystring for 1st page; subsequent pages provided by next_page
@@ -175,13 +165,6 @@ def sync_endpoint(client, #pylint: disable=too-many-branches
 
         if params != {}:
             querystring = '&'.join(['%s=%s' % (key, value) for (key, value) in params.items()])
-
-        LOGGER.info('querystring: {}'.format(querystring))
-
-        LOGGER.info('URL for Stream {}: {}{}'.format(
-            stream_name,
-            next_url,
-            '?{}'.format(querystring) if querystring else ''))
 
         # API request data
         data = {}
@@ -228,7 +211,6 @@ def sync_endpoint(client, #pylint: disable=too-many-branches
                     raise RuntimeError
             rec_count = rec_count + 1
 
-        LOGGER.info('got to process_records')
         # Process records and get the max_bookmark_value and record_count for the set of records
         max_bookmark_value, record_count = process_records(
             catalog=catalog,
@@ -242,8 +224,6 @@ def sync_endpoint(client, #pylint: disable=too-many-branches
             last_integer=last_integer,
             parent=parent,
             parent_id=parent_id)
-        LOGGER.info('Stream {}, batch processed {} records'.format(
-            stream_name, record_count))
 
         # set total_records and next_url for pagination
         total_records = total_records + record_count
@@ -320,13 +300,10 @@ def sync(client, config, catalog, state):
     # Get selected_streams from catalog, based on state last_stream
     #   last_stream = Previous currently synced stream, if the load was interrupted
     last_stream = singer.get_currently_syncing(state)
-    LOGGER.info('last/currently syncing stream: {}'.format(last_stream))
 
     selected_streams = []
     for stream in catalog.get_selected_streams(state):
         selected_streams.append(stream.stream)
-
-    LOGGER.info('selected_streams: {}'.format(selected_streams))
 
     if not selected_streams:
         return
@@ -335,12 +312,9 @@ def sync(client, config, catalog, state):
     for stream_name, endpoint_config in STREAMS.items():
         if stream_name in selected_streams:
 
-            # LOGGER.info(endpoint_config)
-            LOGGER.info('START Syncing: {}'.format(stream_name))
+            LOGGER.info('Start Syncing: {}'.format(stream_name))
 
             selected_fields = get_selected_fields(catalog, stream_name)
-
-            LOGGER.info('Stream: {}, selected_fields: {}'.format(stream_name, selected_fields))
 
             update_currently_syncing(state, stream_name)
 
